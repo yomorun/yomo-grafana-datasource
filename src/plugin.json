@@ -1,0 +1,30 @@
+{
+  "type": "datasource",
+  "name": "YoMo streams",
+  "id": "apsd0d0-yomo-datasource",
+  "info": {
+    "description": "Subscribe to YoMo websocket streams",
+    "author": {
+      "name": "osdodo",
+      "url": "https://[::1]/"
+    },
+    "keywords": ["yomo websocket"],
+    "logos": {
+      "small": "img/logo.png",
+      "large": "img/logo.png"
+    },
+    "links": [
+      {
+        "name": "Website",
+        "url": "https://github.com/yomorun/yomo-websocket-datasource"
+      }
+    ],
+    "screenshots": [],
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
+  },
+  "dependencies": {
+    "grafanaDependency": ">=7.0.0",
+    "plugins": []
+  }
+}
