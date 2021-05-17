@@ -1,14 +1,24 @@
 {
   "type": "datasource",
   "name": "YoMo streams",
-  "id": "apsd0d0-yomo-datasource",
+  "id": "osdodo-yomo-datasource",
+  "metrics": true,
+  "streaming": true,
   "info": {
     "description": "Subscribe to YoMo websocket streams",
     "author": {
       "name": "osdodo",
       "url": "https://[::1]/"
     },
-    "keywords": ["yomo websocket"],
+    "keywords": [
+      "yomo",
+      "stream data",
+      "grafana",
+      "plugin",
+      "websocket",
+      "streaming",
+      "datasource"
+    ],
     "logos": {
       "small": "img/logo.png",
       "large": "img/logo.png"

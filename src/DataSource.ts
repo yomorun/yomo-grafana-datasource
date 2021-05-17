@@ -18,42 +18,54 @@ export class DataSource extends DataSourceApi<MyQuery, MyDataSourceOptions> {
 
   constructor(instanceSettings: DataSourceInstanceSettings<MyDataSourceOptions>) {
     super(instanceSettings);
-
-    this.serverURL = instanceSettings.jsonData.url || 'ws://localhost:8080';
+    this.serverURL = instanceSettings.jsonData.url || 'ws://localhost:3000';
   }
 
   query(options: DataQueryRequest<MyQuery>): Observable<DataQueryResponse> {
-    const observables = options.targets.map((target) => {
+    const streams = options.targets.map((target) => {
       const query = defaults(target, defaultQuery);
 
       return new Observable<DataQueryResponse>((subscriber) => {
         const frame = new CircularDataFrame({
           append: 'tail',
-          capacity: 1000,
+          capacity: 10,
         });
 
         frame.refId = query.refId;
-        frame.addField({ name: 'value', type: FieldType.number });
+        frame.addField({ name: 'time', type: FieldType.time });
 
-        const connection = new WebSocket(this.serverURL || '');
+        const { numberFields, stringFields } = query;
+        if (!numberFields.length && !stringFields.length) {
+          return;
+        }
+        numberFields.map((field) => {
+          frame.addField({ name: field, type: FieldType.number });
+        });
+        stringFields.map((field) => {
+          frame.addField({ name: field, type: FieldType.string });
+        });
 
-        connection.onerror = (error: any) => {
+        const socket = new WebSocket(this.serverURL || '');
+        socket.onerror = (error: any) => {
           console.log(`WebSocket error: ${JSON.stringify(error)}`);
         };
-
-        connection.onmessage = (event: any) => {
-          const { time, value } = JSON.parse(event.data);
-          frame.add({ time, value });
+        socket.onmessage = (event: any) => {
+          const parsedEvent = JSON.parse(event.data);
+          frame.add(parsedEvent);
 
           subscriber.next({
             data: [frame],
             key: query.refId,
           });
         };
+
+        return () => {
+          socket.close();
+        };
       });
     });
 
-    return merge(...observables);
+    return merge(...streams);
   }
 
   async testDatasource() {

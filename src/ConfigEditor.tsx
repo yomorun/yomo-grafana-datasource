@@ -27,7 +27,7 @@ export class ConfigEditor extends PureComponent<Props, State> {
       <div className="gf-form-group">
         <div className="gf-form">
           <FormField
-            label="WebSocket server URL"
+            label="WebSocket Server URL"
             labelWidth={10}
             inputWidth={20}
             onChange={this.onURLChange}

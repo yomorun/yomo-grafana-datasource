@@ -1,42 +1,55 @@
-# Grafana Data Source Plugin Template
+# Grafana YoMo streaming datasource
 
-[![Build](https://github.com/grafana/grafana-starter-datasource/workflows/CI/badge.svg)](https://github.com/grafana/grafana-starter-datasource/actions?query=workflow%3A%22CI%22)
+## Purpose
 
-This template is a starting point for building Grafana Data Source Plugins
+This datasource connects to a YoMo using websockets and subscribes to a stream.
 
-## What is Grafana Data Source Plugin?
+![Animation showing timeseries being streamed to Grafana](https://github.com/yomorun/yomo-websocket-datasource/blob/master/grafana-yomo-streams.gif)
 
-Grafana supports a wide range of data sources, including Prometheus, MySQL, and even Datadog. There’s a good chance you can already visualize metrics from the systems you have set up. In some cases, though, you already have an in-house metrics solution that you’d like to add to your Grafana dashboards. Grafana Data Source Plugins enables integrating such solutions with Grafana.
+## Installation
 
-## Getting started
+### Latest published on grafana.com
 
-1. Install dependencies
+```
+grafana-cli plugins install yomo-websocket-datasource
+```
 
-   ```bash
-   yarn install
-   ```
+Or use the releases link on github and download the `.zip`.
+Then just `unzip` it to your Grafana plugins folder or run the following:
 
-2. Build plugin in development mode or run in watch mode
+```
+version=1.0.0
+grafana-cli --pluginUrl ./yomo-websocket-datasource-${version}.zip plugins install yomo-websocket-datasource
+```
 
-   ```bash
-   yarn dev
-   ```
+### Roll your own
 
-   or
+You can also build your own using `yarn build` and moving the `dist` folder to your grafana plugins
+directory under the name `yomo-websocket-datasource`.
 
-   ```bash
-   yarn watch
-   ```
 
-3. Build plugin in production mode
+## Datasource Configuration
 
-   ```bash
-   yarn build
-   ```
+### Base URL
+
+Base URL to the YoMo server.
+
+#### Examples
+
+```
+wss://yomo.cel-la.store/v3/ws
+```
+
+## Query Configuration
+
+### NumericFields
+
+Comma separated list of numeric fields. Example: 'noise'.
+
+### StringFields
+
+Comma separated list of attributes to return as fields.
 
 ## Learn more
-
-- [Build a data source plugin tutorial](https://grafana.com/tutorials/build-a-data-source-plugin)
 - [Grafana documentation](https://grafana.com/docs/)
 - [Grafana Tutorials](https://grafana.com/tutorials/) - Grafana Tutorials are step-by-step guides that help you make the most of Grafana
-- [Grafana UI Library](https://developers.grafana.com/ui) - UI components to help you build interfaces using Grafana Design System

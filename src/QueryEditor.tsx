@@ -1,5 +1,4 @@
 import defaults from 'lodash/defaults';
-
 import React, { ChangeEvent, PureComponent } from 'react';
 import { LegacyForms } from '@grafana/ui';
 import { QueryEditorProps } from '@grafana/data';
@@ -11,38 +10,35 @@ const { FormField } = LegacyForms;
 type Props = QueryEditorProps<DataSource, MyQuery, MyDataSourceOptions>;
 
 export class QueryEditor extends PureComponent<Props> {
-  onQueryTextChange = (event: ChangeEvent<HTMLInputElement>) => {
+  onNumberFieldsChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { onChange, query } = this.props;
-    onChange({ ...query, queryText: event.target.value });
+    onChange({ ...query, numberFields: event.target.value.split(',') });
   };
 
-  onConstantChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { onChange, query, onRunQuery } = this.props;
-    onChange({ ...query, constant: parseFloat(event.target.value) });
-    // executes the query
-    onRunQuery();
+  onStringFieldsChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { onChange, query } = this.props;
+    onChange({ ...query, stringFields: event.target.value.split(',') });
   };
 
   render() {
     const query = defaults(this.props.query, defaultQuery);
-    const { queryText, constant } = query;
+    const { numberFields, stringFields } = query;
 
     return (
       <div className="gf-form">
         <FormField
-          width={4}
-          value={constant}
-          onChange={this.onConstantChange}
-          label="Constant"
-          type="number"
-          step="0.1"
+          labelWidth={10}
+          value={numberFields || ''}
+          onChange={this.onNumberFieldsChange}
+          label="Numeric fields"
+          tooltip="Comma separated list of numeric fields. Example: 'noise'"
         />
         <FormField
-          labelWidth={8}
-          value={queryText || ''}
-          onChange={this.onQueryTextChange}
-          label="Query Text"
-          tooltip="Not used yet"
+          labelWidth={10}
+          value={stringFields || ''}
+          onChange={this.onStringFieldsChange}
+          label="String fields"
+          tooltip="Comma separated list of attributes to return as fields."
         />
       </div>
     );
