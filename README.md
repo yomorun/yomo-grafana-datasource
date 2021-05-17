@@ -1,10 +1,8 @@
 # Grafana YoMo streaming datasource
 
-## Purpose
-
 This datasource connects to a YoMo using websockets and subscribes to a stream.
 
-![Animation showing timeseries being streamed to Grafana](https://github.com/yomorun/yomo-websocket-datasource/blob/master/grafana-yomo-streams.gif)
+![Animation showing timeseries being streamed to Grafana](https://github.com/yomorun/yomo-websocket-datasource/blob/main/grafana-yomo-streams.gif)
 
 ## Installation
 
