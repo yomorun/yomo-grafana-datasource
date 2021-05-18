@@ -6,25 +6,10 @@ This datasource connects to a YoMo using websockets and subscribes to a stream.
 
 ## Installation
 
-### Latest published on grafana.com
+Use the releases link on github and download the `.zip`.
+Then just `unzip` it to your Grafana plugins folder.
 
-```
-grafana-cli plugins install yomo-websocket-datasource
-```
-
-Or use the releases link on github and download the `.zip`.
-Then just `unzip` it to your Grafana plugins folder or run the following:
-
-```
-version=1.0.0
-grafana-cli --pluginUrl ./yomo-websocket-datasource-${version}.zip plugins install yomo-websocket-datasource
-```
-
-### Roll your own
-
-You can also build your own using `yarn build` and moving the `dist` folder to your grafana plugins
-directory under the name `yomo-websocket-datasource`.
-
+You can also build your own using `yarn build` and moving the `dist` folder to your grafana plugins.
 
 ## Datasource Configuration
 
