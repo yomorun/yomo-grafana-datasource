@@ -6,22 +6,26 @@ This datasource connects to a YoMo using websockets and subscribes to a stream.
 
 ## Installation
 
-Use the releases link on github and download the `.zip`.
-Then just `unzip` it to your Grafana plugins folder.
+Install [grafana](https://grafana.com/docs/grafana/latest/installation)
 
-You can also build your own using `yarn build` and moving the `dist` folder to your grafana plugins.
+Use the releases link on github and download the `.zip`. Then just `unzip` it to your Grafana plugins folder. You can also build your own using `yarn build` and moving the `dist` folder to your grafana plugins.
+
+To start Grafana service.
 
 ## Datasource Configuration
 
-### Base URL
-
-Base URL to the YoMo server.
-
+### WebSocket Server URL
 #### Examples
 
 ```
 wss://yomo.cel-la.store/v3/ws
 ```
+
+![Datasource Configuration](https://github.com/yomorun/yomo-websocket-datasource/blob/main/config-1.png)
+
+![Datasource Configuration](https://github.com/yomorun/yomo-websocket-datasource/blob/main/config-2.png)
+
+![Datasource Configuration](https://github.com/yomorun/yomo-websocket-datasource/blob/main/config-3.png)
 
 ## Query Configuration
 
@@ -32,6 +36,10 @@ Comma separated list of numeric fields. Example: 'noise'.
 ### StringFields
 
 Comma separated list of attributes to return as fields.
+
+![Query Configuration](https://github.com/yomorun/yomo-websocket-datasource/blob/main/config-4.png)
+
+![Query Configuration](https://github.com/yomorun/yomo-websocket-datasource/blob/main/config-5.png)
 
 ## Learn more
 - [Grafana documentation](https://grafana.com/docs/)
