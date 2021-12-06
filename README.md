@@ -10,6 +10,8 @@ Install [grafana](https://grafana.com/docs/grafana/latest/installation)
 
 Use the [releases link](https://github.com/yomorun/yomo-websocket-datasource/releases) on github and download the `.zip`. Then just `unzip` it to your [Grafana plugins](https://grafana.com/docs/grafana/latest/plugins/installation/#install-a-packaged-plugin) folder. You can also build your own using `yarn build` and moving the `dist` folder to your grafana plugins.
 
+> Note, Linux requires to add the plugin id `osdodo-yomo-datasource` to the `allow_loading_unsigned_plugins` in `/etc/grafana/grafana.ini`.
+
 To start Grafana service.
 
 ## Datasource Configuration
