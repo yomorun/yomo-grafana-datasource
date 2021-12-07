@@ -1,7 +1,7 @@
 {
   "type": "datasource",
   "name": "YoMo streams",
-  "id": "osdodo-yomo-datasource",
+  "id": "yomo-grafana-datasource",
   "metrics": true,
   "streaming": true,
   "info": {
@@ -26,7 +26,7 @@
     "links": [
       {
         "name": "Website",
-        "url": "https://github.com/yomorun/yomo-websocket-datasource"
+        "url": "https://github.com/yomorun/yomo-grafana-datasource"
       }
     ],
     "screenshots": [],

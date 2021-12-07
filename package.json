@@ -1,5 +1,5 @@
 {
-  "name": "yomo-websocket-datasource",
+  "name": "yomo-grafana-datasource",
   "version": "1.0.0",
   "description": "Subscribe to YoMo websocket streams",
   "scripts": {
